@@ -18,6 +18,11 @@ spec:
           tag: "dev"
         postgres:
           database: app
+        hpa:
+          enabled: true
+          minReplicas: 1
+          maxReplicas: 3
+          targetCPUUtilizationPercentage: 75
   destination:
     server: https://kubernetes.default.svc
     namespace: sol9
