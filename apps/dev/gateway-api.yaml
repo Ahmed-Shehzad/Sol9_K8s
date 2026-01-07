@@ -16,6 +16,14 @@ spec:
       values: |
         image:
           tag: "dev"
+        ingress:
+          enabled: true
+          className: nginx
+          hosts:
+            - host: gateway.local
+              paths:
+                - path: /
+                  pathType: Prefix
   destination:
     server: https://kubernetes.default.svc
     namespace: sol9
