@@ -27,7 +27,7 @@ spec:
             OTEL_EXPORTER_OTLP_PROTOCOL: grpc
         rollout:
           enabled: true
-          strategy: canary
+          strategy: blueGreen
           analysis:
             enabled: true
         postgres:
