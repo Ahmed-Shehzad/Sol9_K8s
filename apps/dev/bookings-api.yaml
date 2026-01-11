@@ -27,8 +27,8 @@ spec:
             url: https://0.0.0.0:8080
             protocols: Http1AndHttp2
           transponderDefaults:
-            localAddress: https://sol9-bookings-api
-            remoteAddress: https://sol9-orders-api
+            localAddress: https://sol9-bookings-api:80
+            remoteAddress: https://sol9-orders-api:80
           extra:
             OTEL_EXPORTER_OTLP_ENDPOINT: http://sol9-aspire-aspire-dashboard:4317
             OTEL_EXPORTER_OTLP_PROTOCOL: grpc
