@@ -22,7 +22,11 @@ spec:
           serviceMonitor:
             enabled: true
         env:
+          transponderDefaults:
+            localAddress: http://sol9-bookings-api
+            remoteAddress: http://sol9-orders-api
           extra:
+            TransponderSettings__GrpcPortOffset: "1"
             OTEL_EXPORTER_OTLP_ENDPOINT: http://sol9-aspire-aspire-dashboard:4317
             OTEL_EXPORTER_OTLP_PROTOCOL: grpc
         rollout:
