@@ -14,8 +14,22 @@ spec:
     helm:
       releaseName: sol9
       values: |
+        replicaCount: 4
         image:
-          tag: "dev"
+          tag: "dev-1fb1de2"
+        metrics:
+          enabled: true
+          serviceMonitor:
+            enabled: true
+        env:
+          extra:
+            OTEL_EXPORTER_OTLP_ENDPOINT: http://sol9-aspire-aspire-dashboard:4317
+            OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+        rollout:
+          enabled: true
+          strategy: canary
+          analysis:
+            enabled: true
         postgres:
           database: app
         hpa:
