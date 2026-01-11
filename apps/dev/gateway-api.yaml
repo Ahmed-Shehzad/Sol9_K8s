@@ -22,6 +22,10 @@ spec:
           serviceMonitor:
             enabled: true
         env:
+          urls: https://0.0.0.0:8080
+          https:
+            url: https://0.0.0.0:8080
+            protocols: Http1AndHttp2
           extra:
             OTEL_EXPORTER_OTLP_ENDPOINT: http://sol9-aspire-aspire-dashboard:4317
             OTEL_EXPORTER_OTLP_PROTOCOL: grpc
@@ -37,6 +41,7 @@ spec:
             kubernetes.io/ingress.class: nginx
             nginx.ingress.kubernetes.io/ssl-redirect: "true"
             nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+            nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
           hosts:
             - host: gateway.local
               paths:
@@ -46,6 +51,9 @@ spec:
             - secretName: sol9-local-tls
               hosts:
                 - gateway.local
+        tls:
+          enabled: true
+          secretName: sol9-local-tls
   destination:
     server: https://kubernetes.default.svc
     namespace: sol9
